@@ -3,9 +3,10 @@ from collections import OrderedDict
 import tsputil
 import math
 
+from itertools import chain, combinations
 
 
-def solve_tsp(points1, subtours=[]):
+def solve_tsp(points1, subtours):
     points = list(points1)
 
     V = range(len(points))
@@ -19,35 +20,31 @@ def solve_tsp(points1, subtours=[]):
 
     ######### BEGIN: Write here your model for Task 1
     x = {}
-    for i in range(len(points)):
-        for j in range(i + 1):
-                x[i, j] = m.addVar(obj=tsputil.distance(points[i], points[j]),
-                                  name='edge_' +str(i) + '_' + str(j))
+    for i in V:
+        for j in range(i+1):
+                x[i, j] = m.addVar( obj=tsputil.distance(points[i], points[j]),
+                                    vtype=GRB.BINARY)
                 x[j, i] = x[i, j]
         m.update()
 
-    # Add degree-2 constraint, and forbid loops
-
-    for i in range(len(points)):
-        m.addConstr(quicksum(x[i, j] for j in range(len(points))) == 2)
+    # 1.
+    for i in V:
+        m.addConstr(quicksum(x[i, j] for j in V) +
+                    quicksum(x[j, i] for j in V) == 2)
         x[i, i].ub = 0
-
-
-
-    obj = quicksum(m.getVars())
-
-    # Add degree-2 constraint, and forbid loops
-
-    for i in range(len(points)):
-        m.addConstr(
-            quicksum(
-                x[i, j]
-                for j in range(len(points))) == 2)
-    x[i, i].ub = 0
 
     m.update()
 
+    # 2.
+    for s in subtours:
+        m.addConstr(quicksum(x[i,j] for i, j in E if i in s if j in s) <= len(s) - 1)
+
+    obj = quicksum(m.getVars())
+
     m.setObjective(obj, GRB.MAXIMIZE)
+
+    m.update()
+
     ######### END
 
     m.optimize()
@@ -62,31 +59,61 @@ def solve_tsp(points1, subtours=[]):
         "Something wrong in solve_tsplp"
         exit(0)
 
+    def solve_separation(points, x_star, k):
+        points = list(points)
+        V = range(len(points))
+        Vprime = range(1, len(points))
+        E = [(i, j) for i in V for j in V if i < j]
+        Eprime = [(i, j) for i in Vprime for j in Vprime if i < j]
+        E = tuplelist(E)
+        Eprime = tuplelist(Eprime)
+
+        m = Model("SEP")
+        m.setParam(GRB.param.OutputFlag, 0)
+
+        ######### BEGIN: Write here your model for Task 4
+
+        ######### END
+        m.optimize()
+        m.write("sep.lp")
+
+        if m.status == GRB.status.OPTIMAL:
+            print('Separation problem solved for k=%d, solution value %g' % (k, m.objVal))
+            m.write("sep.sol")  # write the solution
+            subtour = filter(lambda i: z[i].x >= 0.99, z)
+            return m.objVal, subtour
+        else:
+            print
+            "Something wrong in solve_tsplp"
+            exit(0)
 
 
 
-def tsplp0(points1, subtours=[]):
 
-    return 0
+    # return 0
+def powerset(iterable):
+    "powerset([1,2,3]) --> () (1,) (2,) (3,) (1,2) (1,3) (2,3) (1,2,3)"
+    s = list(iterable)
+    return chain.from_iterable(combinations(s, r) for r in range(len(s)+1))
+
 
 def main(argv):
 
-    # points = tsputil.Cities(n=20, seed=12)
+
+    points = tsputil.Cities(n=12, seed=12)
     # tsputil.plot_situation(points)
 
-    points = tsputil.read_instance("dantzig42.dat")
+    # points = tsputil.read_instance("dantzig42.dat")
+    subtours = list(powerset(range(len(points))))
+    # The first element of the list is the empty set and the last element is the full set, hence we remove them.
+    subtours = subtours[1:(len(subtours) - 1)]
 
-    # task 1
-    solve_tsp(points, [])
-
+    # task 2
     tsplp0 = solve_tsp(points, [])
     tsputil.plot_situation(points, tsplp0)
 
 
-    # tsputil.plot_situation(plotlist)
-    print("test")
-
-
+    task 4
 
 
 if __name__ == "__main__":
