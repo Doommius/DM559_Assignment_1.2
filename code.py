@@ -18,25 +18,32 @@ def solve_tsp(points1, subtours=[]):
     m.setParam(GRB.param.MIPGap, 1e-7)
 
     ######### BEGIN: Write here your model for Task 1
-    edges = {}
+    x = {}
     for i in range(len(points)):
         for j in range(i + 1):
-            #if (i != j):
-                edges[i, j] = m.addVar(obj=tsputil.distance(points[i], points[j]),
+                x[i, j] = m.addVar(obj=tsputil.distance(points[i], points[j]),
                                   name='edge_' +str(i) + '_' + str(j))
-                edges[j, i] = edges[i, j]
+                x[j, i] = x[i, j]
         m.update()
 
     # Add degree-2 constraint, and forbid loops
 
     for i in range(len(points)):
-        m.addConstr(quicksum(edges[i, j] for j in range(len(points))) == 2)
-        edges[i, i].ub = 0
+        m.addConstr(quicksum(x[i, j] for j in range(len(points))) == 2)
+        x[i, i].ub = 0
 
 
 
     obj = quicksum(m.getVars())
 
+    # Add degree-2 constraint, and forbid loops
+
+    for i in range(len(points)):
+        m.addConstr(
+            quicksum(
+                x[i, j]
+                for j in range(len(points))) == 2)
+    x[i, i].ub = 0
 
     m.update()
 
@@ -62,11 +69,15 @@ def main(argv):
 
     points = tsputil.read_instance("dantzig42.dat")
 
+    # task 1
+    solve_tsp(points, [])
+
+
     print(list(points))
 
-    plotlist = solve_tsp(points,[])
+    plotlist =
 
-    tsputil.plot_situation(plotlist)
+    # tsputil.plot_situation(plotlist)
     print("test")
 
 

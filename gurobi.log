@@ -592,7 +592,7 @@ Changed value of parameter Method to 0
 Changed value of parameter MIPGap to 1e-07
    Prev: 0.0001  Min: 0.0  Max: 1e+100  Default: 0.0001
 
-Gurobi 7.0.2 (win64, Python) logging started 05/23/17 14:50:56
+Gurobi 7.0.2 (linux64, Python) logging started Tue May 23 14:46:42 2017
 
 Changed value of parameter Presolve to 0
    Prev: -1  Min: -1  Max: 2  Default: -1
@@ -601,7 +601,7 @@ Changed value of parameter Method to 0
 Changed value of parameter MIPGap to 1e-07
    Prev: 0.0001  Min: 0.0  Max: 1e+100  Default: 0.0001
 
-Gurobi 7.0.2 (win64, Python) logging started 05/23/17 14:54:39
+Gurobi 7.0.2 (linux64, Python) logging started Tue May 23 14:50:05 2017
 
 Changed value of parameter Presolve to 0
    Prev: -1  Min: -1  Max: 2  Default: -1
@@ -610,7 +610,7 @@ Changed value of parameter Method to 0
 Changed value of parameter MIPGap to 1e-07
    Prev: 0.0001  Min: 0.0  Max: 1e+100  Default: 0.0001
 
-Gurobi 7.0.2 (win64, Python) logging started 05/23/17 14:55:44
+Gurobi 7.0.2 (linux64, Python) logging started Tue May 23 14:56:59 2017
 
 Changed value of parameter Presolve to 0
    Prev: -1  Min: -1  Max: 2  Default: -1
@@ -619,7 +619,7 @@ Changed value of parameter Method to 0
 Changed value of parameter MIPGap to 1e-07
    Prev: 0.0001  Min: 0.0  Max: 1e+100  Default: 0.0001
 
-Gurobi 7.0.2 (win64, Python) logging started 05/23/17 14:56:46
+Gurobi 7.0.2 (linux64, Python) logging started Tue May 23 15:01:05 2017
 
 Changed value of parameter Presolve to 0
    Prev: -1  Min: -1  Max: 2  Default: -1
@@ -628,7 +628,7 @@ Changed value of parameter Method to 0
 Changed value of parameter MIPGap to 1e-07
    Prev: 0.0001  Min: 0.0  Max: 1e+100  Default: 0.0001
 
-Gurobi 7.0.2 (win64, Python) logging started 05/23/17 14:57:46
+Gurobi 7.0.2 (linux64, Python) logging started Tue May 23 15:01:32 2017
 
 Changed value of parameter Presolve to 0
    Prev: -1  Min: -1  Max: 2  Default: -1
@@ -637,7 +637,7 @@ Changed value of parameter Method to 0
 Changed value of parameter MIPGap to 1e-07
    Prev: 0.0001  Min: 0.0  Max: 1e+100  Default: 0.0001
 
-Gurobi 7.0.2 (win64, Python) logging started 05/23/17 14:58:05
+Gurobi 7.0.2 (linux64, Python) logging started Tue May 23 15:03:00 2017
 
 Changed value of parameter Presolve to 0
    Prev: -1  Min: -1  Max: 2  Default: -1
@@ -646,7 +646,7 @@ Changed value of parameter Method to 0
 Changed value of parameter MIPGap to 1e-07
    Prev: 0.0001  Min: 0.0  Max: 1e+100  Default: 0.0001
 
-Gurobi 7.0.2 (win64, Python) logging started 05/23/17 14:59:36
+Gurobi 7.0.2 (linux64, Python) logging started Tue May 23 15:03:31 2017
 
 Changed value of parameter Presolve to 0
    Prev: -1  Min: -1  Max: 2  Default: -1
@@ -654,15 +654,57 @@ Changed value of parameter Method to 0
    Prev: -1  Min: -1  Max: 4  Default: -1
 Changed value of parameter MIPGap to 1e-07
    Prev: 0.0001  Min: 0.0  Max: 1e+100  Default: 0.0001
-Optimize a model with 42 rows, 903 columns and 1764 nonzeros
+Optimize a model with 84 rows, 903 columns and 3528 nonzeros
 Coefficient statistics:
   Matrix range     [1e+00, 1e+00]
   Objective range  [1e+00, 1e+00]
   Bounds range     [0e+00, 0e+00]
   RHS range        [2e+00, 2e+00]
 Iteration    Objective       Primal Inf.    Dual Inf.      Time
-       0    8.2000000e+01   8.000000e+01   1.639999e+09      0s
-      65    4.2000000e+01   0.000000e+00   0.000000e+00      0s
+       0    8.2000000e+01   1.600000e+02   3.279999e+09      0s
+      69    4.2000000e+01   0.000000e+00   0.000000e+00      0s
 
-Solved in 65 iterations and 0.00 seconds
+Solved in 69 iterations and 0.00 seconds
+Optimal objective  4.200000000e+01
+
+Gurobi 7.0.2 (linux64, Python) logging started Tue May 23 15:04:00 2017
+
+Changed value of parameter Presolve to 0
+   Prev: -1  Min: -1  Max: 2  Default: -1
+Changed value of parameter Method to 0
+   Prev: -1  Min: -1  Max: 4  Default: -1
+Changed value of parameter MIPGap to 1e-07
+   Prev: 0.0001  Min: 0.0  Max: 1e+100  Default: 0.0001
+Optimize a model with 84 rows, 903 columns and 3528 nonzeros
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [2e+00, 2e+00]
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    8.2000000e+01   1.600000e+02   3.279999e+09      0s
+      69    4.2000000e+01   0.000000e+00   0.000000e+00      0s
+
+Solved in 69 iterations and 0.00 seconds
+Optimal objective  4.200000000e+01
+
+Gurobi 7.0.2 (linux64, Python) logging started Tue May 23 15:04:31 2017
+
+Changed value of parameter Presolve to 0
+   Prev: -1  Min: -1  Max: 2  Default: -1
+Changed value of parameter Method to 0
+   Prev: -1  Min: -1  Max: 4  Default: -1
+Changed value of parameter MIPGap to 1e-07
+   Prev: 0.0001  Min: 0.0  Max: 1e+100  Default: 0.0001
+Optimize a model with 84 rows, 903 columns and 3528 nonzeros
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [2e+00, 2e+00]
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    8.2000000e+01   1.600000e+02   3.279999e+09      0s
+      69    4.2000000e+01   0.000000e+00   0.000000e+00      0s
+
+Solved in 69 iterations and 0.00 seconds
 Optimal objective  4.200000000e+01
