@@ -73,7 +73,8 @@ def solve_tsp(points1, subtours=[]):
     obj = quicksum(
         edges[i, j]
         for i in range(len(edges))
-        for j in range(len(edges[i]))
+        for j in range(len(edges)+1)
+        # for j in range(len(edges[i]))
     )
 
     obj = quicksum(model.getVars())
@@ -107,7 +108,7 @@ def solve_tsp(points1, subtours=[]):
 def main(argv):
 
     points = tsputil.Cities(n=20, seed=12)
-    tsputil.plot_situation(points)
+    # tsputil.plot_situation(points)
 
     # points = read_instance("dantzig42.dat")
 
