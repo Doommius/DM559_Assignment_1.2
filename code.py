@@ -67,7 +67,7 @@ def solve_tsp(points1, subtours):
 
 
 
-
+# task 5
 def solve_separation(points, x_star, k):
     points = list(points)
     V = range(len(points))
@@ -99,6 +99,9 @@ def solve_separation(points, x_star, k):
 
         # return 0
 
+
+
+#task 6
 def cutting_plane_alg(points):
     Vprime = range(1,len(points))
     subtours = []
@@ -142,8 +145,7 @@ def main(argv):
     tsplp0 = solve_tsp(points, [])
     tsputil.plot_situation(points, tsplp0)
 
-    task
-    4
+    #task 4
 
 
 if __name__ == "__main__":
