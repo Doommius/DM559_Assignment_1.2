@@ -67,10 +67,11 @@ def solve_tsp(points1, subtours=[]):
     edges = {}
     for i in range(len(points)):
         for j in range(i + 1):
-            vars[i, j] = m.addVar(obj=tsputil.distance(points[i], points[j]),
+            if (i != j):
+                vars[i, j] = m.addVar(obj=tsputil.distance(points[i], points[j]),
                                   vtype=GRB.BINARY,
                                   name='edge_' +str(i) + '_' + str(j))
-            vars[j, i] = vars[i, j]
+                vars[j, i] = vars[i, j]
         m.update()
 
     # Add degree-2 constraint, and forbid loops
@@ -79,12 +80,7 @@ def solve_tsp(points1, subtours=[]):
         m.addConstr(quicksum(vars[i, j] for j in range(len(points))) == 2)
         vars[i, i].ub = 0
 
-    # obj = quicksum(
-    #     edges[i, j]
-    #     for i in range(len(edges))
-    #     for j in range(len(edges)+1)
-        # for j in range(len(edges[i]))
-    # )
+
 
     obj = quicksum(model.getVars())
 
