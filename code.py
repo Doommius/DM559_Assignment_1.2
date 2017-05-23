@@ -10,6 +10,7 @@ import math
 def subtourelim(model, where):
   if where == GRB.callback.MIPSOL:
     selected = []
+
     # make a list of edges selected in the solution
     for i in range(n):
       sol = model.cbGetSolution([model._vars[i,j] for j in range(n)])
@@ -66,16 +67,24 @@ def solve_tsp(points1, subtours=[]):
     edges = {}
     for i in range(len(points)):
         for j in range(i + 1):
-            if (i != j):
-                edges[i, j] = m.addVar(obj=tsputil.distance(points[i], points[j]),  name='edge_' + str(i) + '_' + str(j))
-                edges[j, i] = edges[i, j]
+            vars[i, j] = m.addVar(obj=tsputil.distance(points[i], points[j]),
+                                  vtype=GRB.BINARY,
+                                  name='edge_' +str(i) + '_' + str(j))
+            vars[j, i] = vars[i, j]
+        m.update()
 
-    obj = quicksum(
-        edges[i, j]
-        for i in range(len(edges))
-        for j in range(len(edges)+1)
+    # Add degree-2 constraint, and forbid loops
+
+    for i in range(len(points)):
+        m.addConstr(quicksum(vars[i, j] for j in range(len(points))) == 2)
+        vars[i, i].ub = 0
+
+    # obj = quicksum(
+    #     edges[i, j]
+    #     for i in range(len(edges))
+    #     for j in range(len(edges)+1)
         # for j in range(len(edges[i]))
-    )
+    # )
 
     obj = quicksum(model.getVars())
 
@@ -107,13 +116,16 @@ def solve_tsp(points1, subtours=[]):
 
 def main(argv):
 
-    points = tsputil.Cities(n=20, seed=12)
+    # points = tsputil.Cities(n=20, seed=12)
     # tsputil.plot_situation(points)
 
-    # points = read_instance("dantzig42.dat")
+    points = tsputil.read_instance("dantzig42.dat")
 
-    solve_tsp(points)
+    print(list(points))
 
+    plotlist = solve_tsp(points,[])
+
+    tsputil.plot_situation(plotlist)
     print("test")
 
 
