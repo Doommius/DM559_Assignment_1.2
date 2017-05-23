@@ -145,8 +145,7 @@ def main(argv):
     tsplp0 = solve_tsp(points, [])
     tsputil.plot_situation(points, tsplp0)
 
-    task
-    4
+    #task 4
 
 
 if __name__ == "__main__":
