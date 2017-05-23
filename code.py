@@ -36,15 +36,15 @@ def solve_tsp(points1, subtours=[]):
 
 
 
-    obj = quicksum(model.getVars())
+    obj = quicksum(m.getVars())
 
     # Add degree-2 constraint, and forbid loops
 
-    for i in range(n):
+    for i in range(len(points)):
         m.addConstr(
             quicksum(
                 edges[i, j]
-                for j in range(n)) == 2)
+                for j in range(len(points))) == 2)
     edges[i, i].ub = 0
 
     m.update()
