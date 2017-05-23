@@ -22,17 +22,16 @@ def solve_tsp(points1, subtours=[]):
     for i in range(len(points)):
         for j in range(i + 1):
             if (i != j):
-                vars[i, j] = m.addVar(obj=tsputil.distance(points[i], points[j]),
-                                  vtype=GRB.BINARY,
+                edges[i, j] = m.addVar(obj=tsputil.distance(points[i], points[j]),
                                   name='edge_' +str(i) + '_' + str(j))
-                vars[j, i] = vars[i, j]
+                edges[j, i] = edges[i, j]
         m.update()
 
     # Add degree-2 constraint, and forbid loops
 
     for i in range(len(points)):
-        m.addConstr(quicksum(vars[i, j] for j in range(len(points))) == 2)
-        vars[i, i].ub = 0
+        m.addConstr(quicksum(edges[i, j] for j in range(len(points))) == 2)
+        edges[i, i].ub = 0
 
 
 
