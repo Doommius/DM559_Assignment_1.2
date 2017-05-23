@@ -18,6 +18,7 @@ def solve_tsp(points1, subtours):
     m.setParam(GRB.param.Method, 0)
     m.setParam(GRB.param.MIPGap, 1e-7)
 
+    '''
     ######### BEGIN: Write here your model for Task 1
     x = {}
     for i,j in E:
@@ -27,18 +28,41 @@ def solve_tsp(points1, subtours):
 
     # 1.
     for i in V:
-        # for i,j in E
         m.addConstr(quicksum(x[i, j] for j in V if i < j) +
                     quicksum(x[j, i] for j in V if j < i) == 2)
-        #x[i, i].ub = 0
 
     m.update()
 
     # 2.
     for s in subtours:
-        m.addConstr(quicksum(x[i, j] for i, j in E if i in s if j in s) <= len(s) - 1)
+        m.addConstr(quicksum(x[i, j] for i, j in E if i in s if j in s) <= len(s)-1 )
 
     obj = quicksum(tsputil.distance(points[i], points[j]) * x[i,j] for i in V for j in V if i < j)
+
+    m.setObjective(obj, GRB.MINIMIZE)
+
+    m.update()
+
+    ######### END
+    '''
+
+    ######### BEGIN: Write here your model for Task 2
+    x = {}
+    for i, j in E:
+        x[i, j] = m.addVar(vtype=GRB.CONTINUOUS)
+        x[i, j].lb = 0
+        x[i, j].ub = 1
+
+    m.update()
+
+    # 1.
+    for i in V:
+        m.addConstr(quicksum(x[i, j] for j in V if i < j) +
+                    quicksum(x[j, i] for j in V if j < i) == 2)
+
+    m.update()
+
+    obj = quicksum(tsputil.distance(points[i], points[j]) * x[i, j] for i in V for j in V if i < j)
 
     m.setObjective(obj, GRB.MINIMIZE)
 
@@ -132,13 +156,16 @@ def powerset(iterable):
 
 
 def main(argv):
-    points = tsputil.Cities(n=12, seed=12)
-    # tsputil.plot_situation(points)
+    n = 20
+    seed = 1200
+    points = tsputil.Cities(n, seed)
 
-    # points = tsputil.read_instance("dantzig42.dat")
-    subtours = list(powerset(range(len(points))))
+    #task 1
+    #subtours = list(powerset(range(len(points))))
     # The first element of the list is the empty set and the last element is the full set, hence we remove them.
-    subtours = subtours[1:(len(subtours) - 1)]
+    #subtours = subtours[1:(len(subtours) - 1)]
+    #tsplp = solve_tsp(points, subtours)
+    #print tsplp
 
     # task 2
     tsplp0 = solve_tsp(points, [])
