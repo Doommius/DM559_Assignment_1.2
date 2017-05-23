@@ -62,6 +62,13 @@ def solve_tsp(points1, subtours=[]):
         "Something wrong in solve_tsplp"
         exit(0)
 
+
+
+
+def tsplp0(points1, subtours=[]):
+
+    return 0
+
 def main(argv):
 
     # points = tsputil.Cities(n=20, seed=12)
@@ -72,10 +79,9 @@ def main(argv):
     # task 1
     solve_tsp(points, [])
 
+    tsplp0 = solve_tsp(ran_points, [])
+    plot_situation(ran_points, tsplp0)
 
-    print(list(points))
-
-    plotlist =
 
     # tsputil.plot_situation(plotlist)
     print("test")
