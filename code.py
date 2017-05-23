@@ -20,18 +20,17 @@ def solve_tsp(points1, subtours):
 
     ######### BEGIN: Write here your model for Task 1
     x = {}
-    for i in V:
-        for j in range(i + 1):
-            x[i, j] = m.addVar(obj=tsputil.distance(points[i], points[j]),
-                               vtype=GRB.BINARY)
-            x[j, i] = x[i, j]
-        m.update()
+    for i,j in E:
+        x[i, j] = m.addVar(vtype=GRB.BINARY)
+
+    m.update()
 
     # 1.
     for i in V:
-        m.addConstr(quicksum(x[i, j] for j in V) +
-                    quicksum(x[j, i] for j in V) == 2)
-        x[i, i].ub = 0
+        # for i,j in E
+        m.addConstr(quicksum(x[i, j] for j in V if i < j) +
+                    quicksum(x[j, i] for j in V if j < i) == 2)
+        #x[i, i].ub = 0
 
     m.update()
 
@@ -39,9 +38,9 @@ def solve_tsp(points1, subtours):
     for s in subtours:
         m.addConstr(quicksum(x[i, j] for i, j in E if i in s if j in s) <= len(s) - 1)
 
-    obj = quicksum(m.getVars())
+    obj = quicksum(tsputil.distance(points[i], points[j]) * x[i,j] for i in V for j in V if i < j)
 
-    m.setObjective(obj, GRB.MAXIMIZE)
+    m.setObjective(obj, GRB.MINIMIZE)
 
     m.update()
 
@@ -143,6 +142,7 @@ def main(argv):
 
     # task 2
     tsplp0 = solve_tsp(points, [])
+    print tsplp0
     tsputil.plot_situation(points, tsplp0)
 
     #task 4
