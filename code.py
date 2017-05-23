@@ -79,8 +79,8 @@ def main(argv):
     # task 1
     solve_tsp(points, [])
 
-    tsplp0 = solve_tsp(ran_points, [])
-    plot_situation(ran_points, tsplp0)
+    tsplp0 = solve_tsp(points, [])
+    tsputil.plot_situation(points, tsplp0)
 
 
     # tsputil.plot_situation(plotlist)
