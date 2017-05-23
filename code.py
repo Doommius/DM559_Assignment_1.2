@@ -5,52 +5,6 @@ import math
 
 
 
-# Callback - use lazy constraints to eliminate sub-tours
-
-def subtourelim(model, where):
-  if where == GRB.callback.MIPSOL:
-    selected = []
-
-    # make a list of edges selected in the solution
-    for i in range(n):
-      sol = model.cbGetSolution([model._vars[i,j] for j in range(n)])
-      selected += [(i,j) for j in range(n) if sol[j] > 0.5]
-    # find the shortest cycle in the selected edge list
-    tour = subtour(selected)
-    if len(tour) < n:
-      # add a subtour elimination constraint
-      expr = 0
-      for i in range(len(tour)):
-        for j in range(i+1, len(tour)):
-          expr += model._vars[tour[i], tour[j]]
-      model.cbLazy(expr <= len(tour)-1)
-
-
-# Given a list of edges, finds the shortest subtour
-
-def subtour(edges):
-  visited = [False]*n
-  cycles = []
-  lengths = []
-  selected = [[] for i in range(n)]
-  for x,y in edges:
-    selected[x].append(y)
-  while True:
-    current = visited.index(False)
-    thiscycle = [current]
-    while True:
-      visited[current] = True
-      neighbors = [x for x in selected[current] if not visited[x]]
-      if len(neighbors) == 0:
-        break
-      current = neighbors[0]
-      thiscycle.append(current)
-    cycles.append(thiscycle)
-    lengths.append(len(thiscycle))
-    if sum(lengths) == n:
-      break
-  return cycles[lengths.index(min(lengths))]
-
 def solve_tsp(points1, subtours=[]):
     points = list(points1)
 
