@@ -98,23 +98,32 @@ ID~\idnr}
 \section*{Task 1}
 
 \lstinputlisting[language=python, frame=single,firstline=22, lastline=46,stepnumber=5,firstnumber=22]{ ../code.py}
+
+\newpage
 \section*{Task 2}
 
+\includegraphics[scale=0.4]{t2.png}
 
+The solution we got is 3 tours, My inspection was that we would have a single tour that would have been optimal, But what i assume is happening is that its linking to the closets partner, so if 16, 5 was higher up(y axis) the algorithm would crate a complete link.
+
+The matrix 
+\newpage
 \section*{Task 3}
+We need the last solution from task 3. includegrafics and commention on it.
 
-
-
+\newpage
 \section*{Task 4}
 
-$Max \sum\limits_{e=ij \in E' : i<j} x^*_e \cdot y - \sum\limits_{i \in V'\setminus \{k\} z_i : z \in \mathbb{B}^n, z_k = 1}$
+$Max \sum\limits_{e=ij \in E' : i<j} x^*_e \cdot y \quad - \quad \sum\limits_{i \in V'\setminus \{k\} z_i : z \in \mathbb{B}^n, z_k = 1}$
 
-$s.t. y \geq z_i+z_j - 1$\\
-$y \leq z_i$\\
-$y \leq z_j$\\
-$0 \leq y \leq 1$
-
+$s.t.\quad y \geq z_i+z_j - 1$\\
+$\phantom{s.t.} \quad y \leq z_i$\\
+$\phantom{s.t.} \quad y \leq z_j$\\
+$\phantom{s.t.} \quad 0 \leq y \leq 1$
+\newpage
 
 \section*{Task 5}
+
+\lstinputlisting[language=python, frame=single,firstline=133, lastline=148,stepnumber=5,firstnumber=133]{ ../code.py}
 
 \end{document}
