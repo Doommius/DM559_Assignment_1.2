@@ -1,0 +1,120 @@
+%%% Do not change from BEGIN to END
+%%% BEGIN
+\documentclass[a4paper,10pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[danish,english]{babel}
+\usepackage{graphicx}
+\usepackage[a4paper,margin=2.7cm]{geometry}
+\usepackage[fleqn]{amsmath}
+\usepackage[fleqn]{mathtools}
+
+\usepackage[math]{kurier}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{enumerate}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows,decorations.pathmorphing,backgrounds,positioning,fit,matrix}
+
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2ex} 
+
+
+\renewcommand{\vec}[1]{\ensuremath {\mathbf #1}}
+
+%%% Settings for the Instructor
+\newcommand{\courseid}{DM559/DM545}
+\newcommand{\coursename}{Linear and Integer Programming}
+\newcommand{\term}{Spring 2017}
+\newcommand{\dept}{Department of Mathematics and Computer Science}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{listings}
+\lstset{language=Python,
+  basicstyle=\ttfamily\lst@ifdisplaystyle\footnotesize\fi,%\fontfamily{pzc}\selectfont,%
+  stringstyle=\ttfamily,
+  commentstyle=\ttfamily,
+  showstringspaces=false,
+  frame=lines, 
+  breaklines=true, tabsize=2,
+  extendedchars=true,inputencoding=utf8
+}
+%\lstavoidwhitepre
+
+
+\pagestyle{fancy} 
+\lhead{{\sc \courseid -- \term }} 
+\chead{}
+\rhead{CPR~nr.~\idnr}
+\cfoot{Page \thepage\ of \pageref{LastPage}}
+
+\fancypagestyle{plain}{
+\lhead{\dept\\
+University of Southern Denmark, Odense}
+\chead{}
+\rhead{\today\\
+ID~\idnr}
+\lfoot{}
+\rfoot{}
+%\renewcommand{\headrulewidth}{0pt}
+}
+
+
+\title{\begin{flushleft}
+\vspace{-4ex}
+\courseid~-- \coursename \\[0.2cm]
+{\Large Answers to Obligatory Assignment 1.1, \term \\[3ex]
+\hrule}
+\end{flushleft}
+}
+
+
+\date{}
+
+%%% END
+
+%%% Settings for the Student
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\idnr}{Osman Toplica}
+\author{Osman Toplica}
+% You will be assigned an ID when you log in 
+% in the submission system
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Task 1}
+
+
+\section*{Task 2}
+
+
+\section*{Task 3}
+
+
+
+\section*{Task 4}
+
+$Max \sum\limits_{e=ij \in E' : i<j} x^*_e \cdot y - \sum\limits_{i \in V'\setminus \{k\} z_i : z \in \mathbb{B}^n, z_k = 1}$
+
+$s.t. y \geq z_i+z_j − 1$\\
+$y \leq z_i$\\
+$y \leq z_j$\\
+$0 \leq y \leq 1$
+
+
+\section*{Task 5}
+
+\end{document}
