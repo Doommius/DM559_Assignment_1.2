@@ -117,64 +117,6 @@ def solve_tsp(points1, subtours):
 
 
 
-def solve_tspf1(points1, subtours):
-    points = list(points1)
-
-    V = range(len(points))
-    E = [(i, j) for i in V for j in V if i < j]
-    E = tuplelist(E)
-
-    m = Model("TSP0")
-    m.setParam(GRB.param.Presolve, 0)
-    m.setParam(GRB.param.Method, 0)
-    m.setParam(GRB.param.MIPGap, 1e-7)
-
-
-    ######### BEGIN: Write here your model for Task 1
-    x = {}
-    for i,j in E:
-        x[i, j] = m.addVar(vtype=GRB.BINARY)
-
-    m.update()
-
-    # 1.
-    for i in V:
-        m.addConstr(quicksum(x[i, j] for j in V if i < j) +
-                    quicksum(x[j, i] for j in V if j < i) == 2)
-
-    m.update()
-
-    # 2.
-    for s in subtours:
-        m.addConstr(quicksum(x[i, j] for i, j in E if i in s if j in s) <= len(s)-1 )
-
-    obj = quicksum(tsputil.distance(points[i], points[j]) * x[i,j] for i in V for j in V if i < j)
-
-    m.setObjective(obj, GRB.MINIMIZE)
-
-    m.update()
-
-    ######### END
-
-    m.optimize()
-    m.write("tsplp.lp")
-
-    if m.status == GRB.status.OPTIMAL:
-        print('The optimal objective is %g' % m.objVal)
-        m.write("tsplp.sol")  # write the solution
-        return {(i, j): x[i, j].x for i, j in x}
-    else:
-        print
-        "Something wrong in solve_tsplp"
-        exit(0)
-
-
-
-
-    return 0
-
-
-
 # task 5
 def solve_separation(points, x_star, k):
     points = list(points)
@@ -246,16 +188,16 @@ def main(argv):
     points = tsputil.Cities(n, seed)
 
     #task 1
-    subtours = list(powerset(range(len(points))))
+    #subtours = list(powerset(range(len(points))))
     # The first element of the list is the empty set and the last element is the full set, hence we remove them.
-    subtours = subtours[1:(len(subtours) - 1)]
-    # tsplp = solve_tspf1(points, subtours)
+    #subtours = subtours[1:(len(subtours) - 1)]
+    # tsplp = solve_tsp(points, subtours)
     #print tsplp
 
     # task 2
-    tsplp_0 = solve_tspf1(points, [])
-    print (tsplp_0)
-    tsputil.plot_situation(points, tsplp_0)
+    #tsplp_0 = solve_tsp(points, [])
+    #print (tsplp_0)
+    #tsputil.plot_situation(points, tsplp_0)
 
     '''
     #task 3
@@ -274,5 +216,9 @@ def main(argv):
     '''
 
     #task 4
+    # modelling..
+
+    #task 5
+
 if __name__ == "__main__":
     main(sys.argv[1:])
