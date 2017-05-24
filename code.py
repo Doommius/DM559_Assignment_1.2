@@ -6,8 +6,8 @@ import math
 from itertools import chain, combinations
 
 
-def solve_tsp(points1, subtours):
-    points = list(points1)
+def solve_tsp(points, subtours):
+    points = list(points)
 
     V = range(len(points))
     E = [(i, j) for i in V for j in V if i < j]
@@ -218,8 +218,8 @@ def main(argv):
     #print tsplp
 
     #task 2
-    tsplp_0 = solve_tsp(points, [])
-    print (tsplp_0)
+    #tsplp_0 = solve_tsp(points, [])
+    #print (tsplp_0)
     #tsputil.plot_situation(points, tsplp_0)
 
     '''
@@ -244,8 +244,9 @@ def main(argv):
     #task 5
     print "jens\n"
 
-    print solve_separation(points, tsplp_0, 3)
-    tsputil.plot_situation(points, tsplp_0)
 
+    tsplp_0 = solve_tsp(points, [])
+    print solve_separation(points, tsplp_0, 1)
+    tsputil.plot_situation(points, tsplp_0)
 if __name__ == "__main__":
     main(sys.argv[1:])
