@@ -189,7 +189,8 @@ def cutting_plane_alg(points):
             value, subtour = solve_separation(points,lpsol,k)
             best_val = value if value > best_val else best_val
             ######### BEGIN: write here the condition. Include a tollerance
-            if False:
+
+            if best_val == 1:
             ######### END
                 found = True
                 tmp_subtours += [subtour]
@@ -242,11 +243,18 @@ def main(argv):
     # modelling..
 
     #task 5
-    print "jens\n"
+    #print "jens\n"
+    #tsplp_0 = solve_tsp(points, [])
+    #print solve_separation(points, tsplp_0, 1)
+    #tsputil.plot_situation(points, tsplp_0)
 
+    #task 6
+    print "jens"
+    dantzig42 = tsputil.read_instance("dantzig42.dat")
+    cutting_plane_alg(points)
 
-    tsplp_0 = solve_tsp(points, [])
-    print solve_separation(points, tsplp_0, 1)
-    tsputil.plot_situation(points, tsplp_0)
+    #task 9
+    # 3284.87
+
 if __name__ == "__main__":
     main(sys.argv[1:])
