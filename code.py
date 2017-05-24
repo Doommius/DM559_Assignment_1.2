@@ -131,17 +131,27 @@ def solve_separation(points, x_star, k):
     m.setParam(GRB.param.OutputFlag, 0)
 
     ######### BEGIN: Write here your model for Task 5
-    z = {}
-    for i in range(len(points)):
-        z[i] = m.addVar(vtype=GRB.BINARY)
-    y = m.addVar(vtype=GRB.BINARY)
+    y = OrderedDict()
+    for i, j in Eprime:
+        y[i, j] = m.addVar(vtype=GRB.CONTINUOUS, lb=0, ub=1, obj=x_star[i, j])
+        z = {}
+
+    for i in Vprime:
+        if i == k:
+            z[i] = m.addVar(vtype=GRB.CONTINUOUS, lb=0, ub=1, obj=0)
+
+        else:
+            z[i] = m.addVar(vtype=GRB.CONTINUOUS, lb=0, ub=1, obj=-1)
+
     m.update()
+    for i, j in Eprime:
+        m.addConstr(y[i,j] >= z[i] + z[j] - 1)
+        m.addConstr(y[i,j] <= z[i])
+        m.addConstr(y[i,j] <= z[j])
+    m.addConstr(z[k] == 1)
 
-    m.addConstr(y >= z[i] + z[j] - 1)
-    m.addConstr(y <= z[i])
-    m.addConstr(y <= z[j])
+    obj = quicksum(x_star[i,j] * y[i,j] for i,j in Eprime if i < j) - quicksum(z[i] for i in Vprime if i != k)
 
-    obj = quicksum(x_star[i,j] * y for i,j in Eprime if i < j) - quicksum(z[i] for i in Vprime if i != k)
 
     m.setObjective(obj, GRB.MAXIMIZE)
 
@@ -233,39 +243,8 @@ def main(argv):
 
     #task 5
     print "jens\n"
-    print "jens\n"
-    print "jens\n"
-    print "jens\n"
-    print "jens\n"
-    print "jens\n"
-    print "jens\n"
-    print "jens\n"
-    print "jens\n"
-    print "jens\n"
-    print "jens\n"
-    print "jens\n"
-    print "jens\n"
-    print "jens\n"
-    print "jens\n"
-    print "jens\n"
-    print "jens\n"
-    print "jens\n"
-    print "jens\n"
-    print "jens\n"
-    print "jens\n"
-    print "jens\n"
-    print "jens\n"
-    print "jens\n"
-    print "jens\n"
-    print "jens\n"
-    print "jens\n"
-    print "jens\n"
-    print "jens\n"
-    print "jens\n"
-    print "jens\n"
-    print "jens\n"
 
-    print solve_separation(points, tsplp_0, 1)
+    print solve_separation(points, tsplp_0, 3)
     tsputil.plot_situation(points, tsplp_0)
 
 if __name__ == "__main__":
