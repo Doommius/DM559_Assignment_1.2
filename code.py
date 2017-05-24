@@ -130,7 +130,20 @@ def solve_separation(points, x_star, k):
     m = Model("SEP")
     m.setParam(GRB.param.OutputFlag, 0)
 
-    ######### BEGIN: Write here your model for Task 4
+    ######### BEGIN: Write here your model for Task 5
+    z = {}
+    for i in range(len(points)):
+        z[i] = m.addVar(vtype=GRB.BINARY)
+    y = m.addVar(vtype=GRB.BINARY)
+    m.update()
+
+    m.addConstr(y >= z[i] + z[j] - 1)
+    m.addConstr(y <= z[i])
+    m.addConstr(y <= z[j])
+
+    obj = quicksum(x_star[i,j] * y for i,j in Eprime if i < j) - quicksum(z[i] for i in Vprime if i != k)
+
+    m.setObjective(obj, GRB.MAXIMIZE)
 
     ######### END
     m.optimize()
@@ -194,9 +207,9 @@ def main(argv):
     # tsplp = solve_tsp(points, subtours)
     #print tsplp
 
-    # task 2
-    #tsplp_0 = solve_tsp(points, [])
-    #print (tsplp_0)
+    #task 2
+    tsplp_0 = solve_tsp(points, [])
+    print (tsplp_0)
     #tsputil.plot_situation(points, tsplp_0)
 
     '''
@@ -219,6 +232,41 @@ def main(argv):
     # modelling..
 
     #task 5
+    print "jens\n"
+    print "jens\n"
+    print "jens\n"
+    print "jens\n"
+    print "jens\n"
+    print "jens\n"
+    print "jens\n"
+    print "jens\n"
+    print "jens\n"
+    print "jens\n"
+    print "jens\n"
+    print "jens\n"
+    print "jens\n"
+    print "jens\n"
+    print "jens\n"
+    print "jens\n"
+    print "jens\n"
+    print "jens\n"
+    print "jens\n"
+    print "jens\n"
+    print "jens\n"
+    print "jens\n"
+    print "jens\n"
+    print "jens\n"
+    print "jens\n"
+    print "jens\n"
+    print "jens\n"
+    print "jens\n"
+    print "jens\n"
+    print "jens\n"
+    print "jens\n"
+    print "jens\n"
+
+    print solve_separation(points, tsplp_0, 1)
+    tsputil.plot_situation(points, tsplp_0)
 
 if __name__ == "__main__":
     main(sys.argv[1:])
