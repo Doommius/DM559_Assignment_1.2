@@ -13532,3 +13532,138 @@ Pool objective bound 3284.87
 
 Optimal solution found (tolerance 1.00e-07)
 Best objective 3.284871375001e+03, best bound 3.284871375001e+03, gap 0.0000%
+
+Gurobi 7.0.2 (win64, Python) logging started 05/25/17 17:26:26
+
+Changed value of parameter Presolve to 0
+   Prev: -1  Min: -1  Max: 2  Default: -1
+Changed value of parameter Method to 0
+   Prev: -1  Min: -1  Max: 4  Default: -1
+Changed value of parameter MIPGap to 1e-07
+   Prev: 0.0001  Min: 0.0  Max: 1e+100  Default: 0.0001
+Optimize a model with 20 rows, 190 columns and 380 nonzeros
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [5e+01, 1e+03]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [2e+00, 2e+00]
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    4.1465874e+03   0.000000e+00   3.840021e+04      0s
+      54    3.0176753e+03   0.000000e+00   0.000000e+00      0s
+
+Solved in 54 iterations and 0.00 seconds
+Optimal objective  3.017675321e+03
+
+Gurobi 7.0.2 (win64, Python) logging started 05/25/17 17:31:56
+
+Changed value of parameter Presolve to 0
+   Prev: -1  Min: -1  Max: 2  Default: -1
+Changed value of parameter Method to 0
+   Prev: -1  Min: -1  Max: 4  Default: -1
+Changed value of parameter MIPGap to 1e-07
+   Prev: 0.0001  Min: 0.0  Max: 1e+100  Default: 0.0001
+Optimize a model with 0 rows, 190 columns and 0 nonzeros
+Coefficient statistics:
+  Matrix range     [0e+00, 0e+00]
+  Objective range  [5e+01, 1e+03]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [0e+00, 0e+00]
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    0.0000000e+00   0.000000e+00   0.000000e+00      0s
+
+Solved in 0 iterations and 0.00 seconds
+Optimal objective  0.000000000e+00
+Changed value of parameter Presolve to 0
+   Prev: -1  Min: -1  Max: 2  Default: -1
+Changed value of parameter Method to 0
+   Prev: -1  Min: -1  Max: 4  Default: -1
+Changed value of parameter MIPGap to 1e-07
+   Prev: 0.0001  Min: 0.0  Max: 1e+100  Default: 0.0001
+Optimize a model with 0 rows, 861 columns and 0 nonzeros
+Coefficient statistics:
+  Matrix range     [0e+00, 0e+00]
+  Objective range  [4e+00, 2e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [0e+00, 0e+00]
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    0.0000000e+00   0.000000e+00   0.000000e+00      0s
+
+Solved in 0 iterations and 0.00 seconds
+Optimal objective  0.000000000e+00
+
+Gurobi 7.0.2 (win64, Python) logging started 05/25/17 17:33:12
+
+Changed value of parameter Presolve to 0
+   Prev: -1  Min: -1  Max: 2  Default: -1
+Changed value of parameter Method to 0
+   Prev: -1  Min: -1  Max: 4  Default: -1
+Changed value of parameter MIPGap to 1e-07
+   Prev: 0.0001  Min: 0.0  Max: 1e+100  Default: 0.0001
+Optimize a model with 0 rows, 190 columns and 0 nonzeros
+Coefficient statistics:
+  Matrix range     [0e+00, 0e+00]
+  Objective range  [5e+01, 1e+03]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [0e+00, 0e+00]
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    8.6441187e+04   0.000000e+00   0.000000e+00      0s
+
+Solved in 0 iterations and 0.00 seconds
+Optimal objective  8.644118714e+04
+
+Gurobi 7.0.2 (win64, Python) logging started 05/25/17 17:37:43
+
+Changed value of parameter Presolve to 0
+   Prev: -1  Min: -1  Max: 2  Default: -1
+Changed value of parameter Method to 0
+   Prev: -1  Min: -1  Max: 4  Default: -1
+Changed value of parameter MIPGap to 1e-07
+   Prev: 0.0001  Min: 0.0  Max: 1e+100  Default: 0.0001
+Optimize a model with 0 rows, 3 columns and 0 nonzeros
+Coefficient statistics:
+  Matrix range     [0e+00, 0e+00]
+  Objective range  [1e+02, 1e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [0e+00, 0e+00]
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    3.8801989e+02   0.000000e+00   0.000000e+00      0s
+
+Solved in 0 iterations and 0.00 seconds
+Optimal objective  3.880198934e+02
+Changed value of parameter Presolve to 0
+   Prev: -1  Min: -1  Max: 2  Default: -1
+Changed value of parameter Method to 0
+   Prev: -1  Min: -1  Max: 4  Default: -1
+Changed value of parameter MIPGap to 1e-07
+   Prev: 0.0001  Min: 0.0  Max: 1e+100  Default: 0.0001
+Optimize a model with 0 rows, 861 columns and 0 nonzeros
+Coefficient statistics:
+  Matrix range     [0e+00, 0e+00]
+  Objective range  [4e+00, 2e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [0e+00, 0e+00]
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    5.9696454e+04   0.000000e+00   0.000000e+00      0s
+
+Solved in 0 iterations and 0.00 seconds
+Optimal objective  5.969645351e+04
+
+Gurobi 7.0.2 (win64, Python) logging started 05/25/17 17:38:00
+
+Changed value of parameter Presolve to 0
+   Prev: -1  Min: -1  Max: 2  Default: -1
+Changed value of parameter Method to 0
+   Prev: -1  Min: -1  Max: 4  Default: -1
+Changed value of parameter MIPGap to 1e-07
+   Prev: 0.0001  Min: 0.0  Max: 1e+100  Default: 0.0001
+Optimize a model with 0 rows, 6 columns and 0 nonzeros
+Coefficient statistics:
+  Matrix range     [0e+00, 0e+00]
+  Objective range  [3e+02, 7e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [0e+00, 0e+00]
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.6844845e+03   0.000000e+00   0.000000e+00      0s
+
+Solved in 0 iterations and 0.00 seconds
+Optimal objective  2.684484501e+03

@@ -44,7 +44,7 @@ def solve_tsp(points, subtours):
     m.update()
 
     ######### END
-
+    '''
     ######### BEGIN: Write here your model for Task 2
     x = {}
     for i, j in E:
@@ -95,7 +95,7 @@ def solve_tsp(points, subtours):
     m.update()
 
     ######### END
-
+    '''
     m.optimize()
     m.write("tsplp.lp")
 
@@ -217,13 +217,13 @@ def main(argv):
     #tsputil.plot_situation(points, tsplp)
 
     #task 2
-    #tsplp_0 = solve_tsp(points, [])
-    #print (tsplp_0)
-    #tsputil.plot_situation(points, tsplp_0)
-    #dantzig42 = tsputil.read_instance("dantzig42.dat")
-    #tsplp_0 = solve_tsp(dantzig42, [])
-    #print (tsplp_0)
-    #tsputil.plot_situation(dantzig42, tsplp_0)
+    tsplp_0 = solve_tsp(points, [])
+    print (tsplp_0)
+    tsputil.plot_situation(points, tsplp_0)
+    dantzig42 = tsputil.read_instance("dantzig42.dat")
+    tsplp_0 = solve_tsp(dantzig42, [])
+    print (tsplp_0)
+    tsputil.plot_situation(dantzig42, tsplp_0)
 
     #task 3
     #subtours = []
@@ -249,7 +249,7 @@ def main(argv):
 
     #task 6
     #dantzig42 = tsputil.read_instance("dantzig42.dat")
-    cutting_plane_alg(points)
+    #cutting_plane_alg(points)
 
     #task 9
     # 3284.87
