@@ -45,7 +45,6 @@ def solve_tsp(points, subtours):
 
     ######### END
 
-
     ######### BEGIN: Write here your model for Task 2
     x = {}
     for i, j in E:
@@ -69,8 +68,8 @@ def solve_tsp(points, subtours):
     m.update()
 
     ######### END
-
     '''
+
     ######### BEGIN: Write here your model for Task 3
     x = {}
     for i,j in E:
@@ -130,11 +129,11 @@ def solve_separation(points, x_star, k):
     m.setParam(GRB.param.OutputFlag, 0)
 
     ######### BEGIN: Write here your model for Task 5
-    y = OrderedDict()
+    y = {}
     for i, j in Eprime:
         y[i, j] = m.addVar(vtype=GRB.CONTINUOUS, lb=0, ub=1, obj=x_star[i, j])
-        z = {}
 
+    z = {}
     for i in Vprime:
         if i == k:
             z[i] = m.addVar(vtype=GRB.CONTINUOUS, lb=0, ub=1, obj=0)
@@ -188,7 +187,6 @@ def cutting_plane_alg(points):
             value, subtour = solve_separation(points,lpsol,k)
             best_val = value if value > best_val else best_val
             ######### BEGIN: write here the condition. Include a tollerance
-
             if best_val == 1:
             ######### END
                 found = True
@@ -214,44 +212,47 @@ def main(argv):
     #subtours = list(powerset(range(len(points))))
     # The first element of the list is the empty set and the last element is the full set, hence we remove them.
     #subtours = subtours[1:(len(subtours) - 1)]
-    # tsplp = solve_tsp(points, subtours)
+    #tsplp = solve_tsp(points, subtours)
     #print tsplp
+    #tsputil.plot_situation(points, tsplp)
 
     #task 2
     #tsplp_0 = solve_tsp(points, [])
     #print (tsplp_0)
     #tsputil.plot_situation(points, tsplp_0)
+    #dantzig42 = tsputil.read_instance("dantzig42.dat")
+    #tsplp_0 = solve_tsp(dantzig42, [])
+    #print (tsplp_0)
+    #tsputil.plot_situation(dantzig42, tsplp_0)
 
     #task 3
-    subtours = []
-
-    subtours = [[1,2,6,19, 14, 3, 10, 8, 11, 4, 7, 18],[0,16,17],[5,13,9,12,15]]
-    
-    subtours = [[1,2,6,19, 14, 3, 10, 8, 11, 4, 7, 18],[0,16,17],[5,13,9,12,15],
-                [1,16,17,0,7,18], [4,8,11], [2,3,14,19,6], [5,10,13,9,12, 15]]
-
-    tsplp_1 = solve_tsp(points, subtours)
-    print tsplp_1
-    tsputil.plot_situation(points, tsplp_1)
+    #subtours = []
+    #
+    #subtours = [[1,2,6,19, 14, 3, 10, 8, 11, 4, 7, 18],[0,16,17],[5,13,9,12,15]]
+    #
+    #subtours = [[1,2,6,19, 14, 3, 10, 8, 11, 4, 7, 18],[0,16,17],[5,13,9,12,15],
+    #            [1,16,17,0,7,18], [4,8,11], [2,3,14,19,6], [5,10,13,9,12, 15]]
+    #
+    #tsplp_1 = solve_tsp(points, subtours)
+    #print tsplp_1
+    #tsputil.plot_situation(points, tsplp_1)
 
     '''
     #task 4
     # modelling..
+    '''
 
     #task 5
-    #print "jens\n"
     #tsplp_0 = solve_tsp(points, [])
     #print solve_separation(points, tsplp_0, 1)
     #tsputil.plot_situation(points, tsplp_0)
 
     #task 6
-    print "jens"
-    dantzig42 = tsputil.read_instance("dantzig42.dat")
+    #dantzig42 = tsputil.read_instance("dantzig42.dat")
     cutting_plane_alg(points)
 
     #task 9
     # 3284.87
-    '''
 
 if __name__ == "__main__":
     main(sys.argv[1:])
